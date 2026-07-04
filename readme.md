@@ -1,88 +1,81 @@
-# User Management API
+# Prisma MongoDB CRUD API
 
-A simple REST API built with **Node.js**, **Express.js**, **Prisma ORM**, and **MySQL** for creating and retrieving users.
+A simple REST API built with **Node.js**, **Express.js**, **Prisma ORM**, and **MongoDB**.
 
 ---
 
 ## Tech Stack
 
-* Node.js
-* Express.js
-* Prisma ORM v6
-* MySQL
+- Node.js
+- Express.js
+- Prisma ORM v6
+- MongoDB
 
 ---
 
 ## Prerequisites
 
-Before running this project, make sure you have installed:
+Before running the project, make sure you have installed:
 
-* Node.js (v18 or later recommended)
-* MySQL Server
-* Git
+- Node.js
+- MongoDB Community Server
+- Git
 
 ---
 
-## Installation
+# Installation
 
-### 1. Clone the repository
+## 1. Clone the repository
 
 ```bash
 git clone <repository-url>
-cd <project-folder>
+cd prisma-mongodb-crud-api-main
 ```
 
-### 2. Install dependencies
+---
+
+## 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Create a `.env` file
+---
 
-Create a `.env` file in the project root and add:
+## 3. Create a `.env` file
 
 ```env
-DATABASE_URL="mysql://root:@localhost:3306/prisma_demo"
+DATABASE_URL="mongodb://localhost:27017/prisma_demo"
+PORT=3000
 ```
 
-> Update the username, password, database name, host, or port if your MySQL configuration is different.
+---
 
-### 4. Create the database
-
-Create a MySQL database named:
-
-```text
-prisma_demo
-```
-
-You can create it using MySQL or phpMyAdmin.
-
-### 5. Run Prisma migrations
-
-Since this project already contains migrations, run:
-
-```bash
-npx prisma migrate dev
-```
-
-This will create all required tables in your database.
-
-### 6. Generate the Prisma Client
+## 4. Generate Prisma Client
 
 ```bash
 npx prisma generate
 ```
 
-### 7. Start the server
+---
+
+## 5. Push the Prisma schema to MongoDB
+
+```bash
+npx prisma db push
+```
+
+---
+
+## 6. Start the server
 
 ```bash
 node index.js
 ```
 
-The API will be available at:
+Server will start on:
 
-```text
+```
 http://localhost:3000
 ```
 
@@ -92,24 +85,18 @@ http://localhost:3000
 
 ## Create User
 
-**POST** `/users`
+**POST**
 
-Request Body
-
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com"
-}
+```
+/users
 ```
 
-Response
+### Request Body
 
 ```json
 {
-  "id": 1,
-  "name": "John Doe",
-  "email": "john@example.com"
+  "name": "Mustafa Umer",
+  "email": "mustafa@example.com"
 }
 ```
 
@@ -117,28 +104,19 @@ Response
 
 ## Get All Users
 
-**GET** `/users`
+**GET**
 
-Response
-
-```json
-[
-  {
-    "id": 1,
-    "name": "John Doe",
-    "email": "john@example.com"
-  }
-]
+```
+/users
 ```
 
 ---
 
 # Project Structure
 
-```text
+```
 .
 ├── prisma
-│   ├── migrations
 │   └── schema.prisma
 ├── index.js
 ├── package.json
@@ -157,10 +135,10 @@ Generate Prisma Client
 npx prisma generate
 ```
 
-Apply existing migrations
+Push Schema
 
 ```bash
-npx prisma migrate dev
+npx prisma db push
 ```
 
 Open Prisma Studio
@@ -171,6 +149,14 @@ npx prisma studio
 
 ---
 
+# Notes
+
+- Ensure MongoDB is running before starting the server.
+- Update the `DATABASE_URL` in the `.env` file if your MongoDB instance uses different credentials or a different host.
+- If using Prisma with MongoDB write operations, MongoDB should be configured as a replica set because Prisma uses transactions for certain operations.
+
+---
+
 # License
 
-This project is available for learning and educational purposes.
+This project is for learning and educational purposes.
