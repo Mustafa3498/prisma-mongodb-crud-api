@@ -1,7 +1,7 @@
 {
   "name": "prisma-mongo",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a simple REST API built using **Node.js, Express, Prisma ORM, and MongoDB**.  \r It demonstrates basic CRUD operations (Create, Read, Update, Delete).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,16 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^6.19.3",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.7.3",
+    "multer": "^2.2.0",
     "prisma": "^6.19.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
